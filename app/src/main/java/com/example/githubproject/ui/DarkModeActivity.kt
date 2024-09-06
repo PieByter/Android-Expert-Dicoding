@@ -9,7 +9,6 @@ import androidx.lifecycle.lifecycleScope
 import com.example.githubproject.databinding.ActivityDarkModeBinding
 import com.example.githubproject.viewmodel.DarkModeViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint

@@ -4,10 +4,13 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import net.sqlcipher.database.SQLiteDatabase
+import net.sqlcipher.database.SupportFactory
 import com.githubproject.core.domain.data.local.entity.FavoriteUser
 
 @Database(entities = [FavoriteUser::class], version = 1, exportSchema = false)
 abstract class FavoriteUserRoomDatabase : RoomDatabase() {
+
     abstract fun favoriteUserDao(): FavoriteUserDao
 
     companion object {
@@ -21,11 +24,17 @@ abstract class FavoriteUserRoomDatabase : RoomDatabase() {
                 if (instance != null) {
                     instance
                 } else {
+                    val passphrase: ByteArray = SQLiteDatabase.getBytes("piebyter".toCharArray())
+                    val factory = SupportFactory(passphrase)
+
                     val newInstance = Room.databaseBuilder(
                         context.applicationContext,
                         FavoriteUserRoomDatabase::class.java,
                         "FavoriteUserDatabase.db"
-                    ).build()
+                    )
+                        .openHelperFactory(factory)
+                        .build()
+
                     INSTANCE = newInstance
                     newInstance
                 }
