@@ -125,4 +125,6 @@ dependencies {
     testImplementation("androidx.activity:activity-ktx:1.9.1")
     testImplementation("com.loopj.android:android-async-http:1.4.11")
     testImplementation("com.google.truth:truth:1.4.4")
+
+    debugImplementation("com.squareup.leakcanary:leakcanary-android:2.14")
 }
