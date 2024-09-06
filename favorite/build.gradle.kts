@@ -119,5 +119,4 @@ dependencies {
     testImplementation("androidx.activity:activity-ktx:1.9.1")
     testImplementation("com.loopj.android:android-async-http:1.4.11")
     testImplementation("com.google.truth:truth:1.4.4")
-    androidTestImplementation("androidx.annotation:annotation:1.8.2")
 }
