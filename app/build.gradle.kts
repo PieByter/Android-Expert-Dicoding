@@ -30,7 +30,7 @@ android {
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -127,4 +127,5 @@ dependencies {
     testImplementation("com.google.truth:truth:1.4.4")
 
     debugImplementation("com.squareup.leakcanary:leakcanary-android:2.14")
+
 }
