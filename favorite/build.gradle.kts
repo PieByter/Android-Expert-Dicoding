@@ -5,6 +5,7 @@ plugins {
     id("kotlin-parcelize")
     id("dagger.hilt.android.plugin")
 }
+
 android {
     namespace = "com.githubproject.favorite"
     compileSdk = 34
@@ -24,6 +25,9 @@ android {
     buildTypes {
         release {
             isMinifyEnabled = false
+            proguardFiles(
+                "proguard-rules.pro"
+            )
         }
     }
     compileOptions {
