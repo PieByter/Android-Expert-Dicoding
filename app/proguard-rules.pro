@@ -20,3 +20,15 @@
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
 
+# Keep ViewBinding classes
+-keep class **ViewBinding { *; }
+-keep class * implements androidx.viewbinding.ViewBinding { *; }
+
+# Keep SQLCipher classes
+-keep class net.sqlcipher.** { *; }
+-keep class org.spatialite.database.** { *; }
+
+# Keep native methods
+-keepclasseswithmembernames class * {
+    native <methods>;
+}
