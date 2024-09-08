@@ -32,3 +32,16 @@
 -keepclasseswithmembernames class * {
     native <methods>;
 }
+
+# Keep Gson deserialization intact
+-keep class com.githubproject.core.domain.data.remote.response.GithubResponse {
+    *;
+}
+
+-keep class com.githubproject.core.domain.data.remote.response.ItemsItem {
+    *;
+}
+
+-keep class com.githubproject.core.domain.data.remote.response.DetailUserResponse{
+    *;
+}
