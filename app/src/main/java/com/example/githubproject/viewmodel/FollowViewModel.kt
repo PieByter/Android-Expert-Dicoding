@@ -5,14 +5,16 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.githubproject.core.domain.model.User
-import com.githubproject.core.domain.repository.interfaces.UserRepository
+import com.githubproject.core.domain.usecase.GetFollowersUseCase
+import com.githubproject.core.domain.usecase.GetFollowingUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class FollowViewModel @Inject constructor(
-    private val userRepository: UserRepository,
+    private val getFollowersUseCase: GetFollowersUseCase,
+    private val getFollowingUseCase: GetFollowingUseCase
 ) : ViewModel() {
 
     private val _followersFollowing = MutableLiveData<List<User>?>()
@@ -30,9 +32,9 @@ class FollowViewModel @Inject constructor(
         viewModelScope.launch {
             try {
                 val flow = if (position == 1) {
-                    userRepository.getFollowers(username)
+                    getFollowersUseCase(username)
                 } else {
-                    userRepository.getFollowing(username)
+                    getFollowingUseCase(username)
                 }
                 flow.collect { followersFollowing ->
                     _followersFollowing.postValue(followersFollowing)

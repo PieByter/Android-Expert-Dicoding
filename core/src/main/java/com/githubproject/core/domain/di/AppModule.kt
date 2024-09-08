@@ -15,6 +15,8 @@ import com.githubproject.core.domain.repository.interfaces.DetailUserRepository
 import com.githubproject.core.domain.usecase.SearchUsersUseCase
 import com.githubproject.core.domain.repository.interfaces.UserRepository
 import com.githubproject.core.domain.repository.interfaces.IGithubRepository
+import com.githubproject.core.domain.usecase.GetFollowersUseCase
+import com.githubproject.core.domain.usecase.GetFollowingUseCase
 import com.githubproject.core.domain.usecase.GithubInteractor
 import com.githubproject.core.domain.usecase.GithubUseCase
 import dagger.Module
@@ -90,5 +92,15 @@ object AppModule {
         detailRepository: DetailRepository,
     ): DetailUserRepository {
         return detailRepository
+    }
+
+    @Provides
+    fun provideGetFollowersUseCase(userRepository: UserRepository): GetFollowersUseCase {
+        return GetFollowersUseCase(userRepository)
+    }
+
+    @Provides
+    fun provideGetFollowingUseCase(userRepository: UserRepository): GetFollowingUseCase {
+        return GetFollowingUseCase(userRepository)
     }
 }
