@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.githubproject.core.BuildConfig
 import net.sqlcipher.database.SQLiteDatabase
 import net.sqlcipher.database.SupportFactory
 import com.githubproject.core.domain.data.local.entity.FavoriteUser
@@ -24,7 +25,7 @@ abstract class FavoriteUserRoomDatabase : RoomDatabase() {
                 if (instance != null) {
                     instance
                 } else {
-                    val passphrase: ByteArray = SQLiteDatabase.getBytes("piebyter".toCharArray())
+                    val passphrase: ByteArray = SQLiteDatabase.getBytes(BuildConfig.KEY.toCharArray())
                     val factory = SupportFactory(passphrase)
 
                     val newInstance = Room.databaseBuilder(

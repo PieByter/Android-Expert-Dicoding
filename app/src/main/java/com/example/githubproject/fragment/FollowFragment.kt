@@ -17,7 +17,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class FollowFragment : Fragment() {
 
     private var _binding: FragmentFollowBinding? = null
-    private val binding get() = _binding!!
+    private val binding get() = _binding ?: throw IllegalStateException("Binding should not be null")
 
     private val viewModel: FollowViewModel by viewModels()
     private lateinit var followAdapter: FollowAdapter
@@ -37,8 +37,8 @@ class FollowFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         arguments?.let {
-            position = it.getInt(ARG_POSITION)
-            username = it.getString(ARG_USERNAME) ?: ""
+            position = it.getInt(ARG_POSITION, 0)
+            username = it.getString(ARG_USERNAME).orEmpty()
         }
 
         followAdapter = FollowAdapter(requireContext())
@@ -58,9 +58,10 @@ class FollowFragment : Fragment() {
             }
         }
 
-        viewModel.errorMessage.observe(viewLifecycleOwner) {
-            it?.let {
+        viewModel.errorMessage.observe(viewLifecycleOwner) { errorMessage ->
+            errorMessage?.let {
                 binding.loadingIndicator.visibility = View.GONE
+                // Handle the error message if necessary
             }
         }
 

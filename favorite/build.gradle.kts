@@ -20,6 +20,7 @@ android {
             "API_KEY",
             "\"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\""
         )
+
     }
 
     buildTypes {
@@ -72,16 +73,16 @@ dependencies {
     // Coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.1")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.1")
-    implementation("androidx.activity:activity-ktx:1.9.1")
+    implementation("androidx.activity:activity-ktx:1.9.2")
 
     // Lifecycle Components
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.4")
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.4")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.4")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.5")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.5")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.5")
 
     // Navigation Components
-    implementation("androidx.navigation:navigation-fragment-ktx:2.7.7")
-    implementation("androidx.navigation:navigation-ui-ktx:2.7.7")
+    implementation("androidx.navigation:navigation-fragment-ktx:2.8.0")
+    implementation("androidx.navigation:navigation-ui-ktx:2.8.0")
 
     // Dependency Injection
     implementation("com.google.dagger:hilt-android:2.52")
@@ -113,7 +114,7 @@ dependencies {
     androidTestImplementation("org.mockito:mockito-android:5.13.0")
     androidTestImplementation("androidx.test:rules:1.6.1")
     androidTestImplementation("androidx.test:runner:1.6.2")
-    testImplementation("androidx.activity:activity-ktx:1.9.1")
+    testImplementation("androidx.activity:activity-ktx:1.9.2")
     testImplementation("com.loopj.android:android-async-http:1.4.11")
     testImplementation("com.google.truth:truth:1.4.4")
 }
